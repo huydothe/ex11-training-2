@@ -1,0 +1,17 @@
+use QuanLySinhVien;
+
+select*from Student;
+select*from Student;
+select*from Student where Status = true;
+
+select Stu.StudentID, Stu.StudentName, Clas.ClassName
+from Student Stu join Class Clas
+on Clas.ClassID = Stu.ClassID;
+
+select Stu.StudentID, Stu.StudentName , Clas.Classname
+from Student Stu join Class Clas on Stu.ClassID = Clas.ClassID
+where Clas.Classname = 'A9';
+
+select Stu.StudentID ,Stu.StudentName, Sub.SubName, M.Mark
+from Student Stu join Mark M on Stu.StudentID = M.StudentID join Subject2 Sub on M.SubID = Sub.SubID
+where Sub.SubName = 'CF';

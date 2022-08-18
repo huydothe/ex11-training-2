@@ -1,0 +1,38 @@
+create database QuanLySinhVien;
+use QuanLySinhVien;
+Create table Class (
+ClassID int not null auto_increment primary key,
+Classname varchar(50) not null,
+StartDate DateTime not null,
+Status bit
+);
+
+create table Student(
+StudentID int not null primary key auto_increment,
+StudentName varchar(50),
+Address varchar(50),
+Phone int,
+Status bit,
+ClassID int not null,
+foreign key (ClassID) references Class(ClassID)
+);
+
+create table Subject2 (
+SubID int not null auto_increment primary key,
+SubName varchar(50) not null,
+Credit tinyint not null default 1 check(Credit >=1),
+status bit default 1
+);
+
+ Create table Mark (
+ MarkID int not null auto_increment primary key,
+ SubID int not null,
+ StudentID int not null,
+ Mark float default 0 check (Mark between 0 and 100),
+ ExamTimes tinyint default 1,
+ unique(SubID,StudentID),
+ foreign key (SubID) references Subject2(SubID),
+ foreign key (StudentID) references Student(StudentID)
+ );
+
+ alter table Class modify column StartDate date;
